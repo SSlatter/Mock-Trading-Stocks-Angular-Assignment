@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="home.component.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Angular Training</title>
+    </head>
+    <body>
+        <header class="main-header">
+            <nav>
+                <ul class="menu">
+                    <li class="menu__list-item"><a href="home" class="menu__list-item--active">Home</a></li>
+                    <li class="menu__list-item"><a href="assets">Assets</a></li>
+                    <li class="menu__list-item"><a href="details">Details</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="stock-list">
+            <follow-stocks></follow-stocks>
+        </section>
+
+        <section class="stock-graph">
+            <app-chart></app-chart>
+        </section>
+
+        <app-transaction-grid></app-transaction-grid>
+
+        <!-- HighCharts -->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="js/highcharts-appl.js"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>

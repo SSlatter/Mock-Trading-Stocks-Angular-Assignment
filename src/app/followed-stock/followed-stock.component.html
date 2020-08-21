@@ -1,0 +1,19 @@
+<div class="stock-list__grid-cell">
+    <a><span class="stock-list__btn stock-list__btn--remove" (click)="unfollowStock()">&ndash;</span></a>
+</div>
+<div class="stock-list__grid-cell">{{StockInfo.stock}}</div>
+<div class="stock-list__grid-cell">{{StockInfo.price | number: '1.2-2'}}</div>
+<div class="stock-list__grid-cell">
+    <a><span class="btn-transaction btn-transaction--buy" (click)="buySellStock('BUY')">buy</span></a>
+</div>
+<div class="stock-list__grid-cell">
+    <a><span class="btn-transaction btn-transaction--sell" (click)="buySellStock('SELL')">sell</span></a>
+</div>
+<div class="stock-list__grid-cell">{{StockInfo.amount}}</div>
+
+<app-transaction-popup
+    *ngIf=BuySellBool
+    [StockList]=StockList
+    [TransactionInfo]=TransactionInfo
+    (close)="closeBuySell($event)">
+</app-transaction-popup>

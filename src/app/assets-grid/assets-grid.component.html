@@ -1,0 +1,25 @@
+<section class="stock-transactions full-width">
+    <div class="stock-transactions__grid-row">
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-text--white">stock</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-text--white">amount</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-text--white">current price</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-text--white">total</span></div>
+        <div class="stock-transactions__grid-cell"></div>
+    </div>
+    <!-- <div class="stock-transactions__grid-row"> -->
+    <div *ngFor="let allocation of allocationList; let i = index" [attr.data-index]="i" class="stock-transactions__grid-row">
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text">{{allocation.symbol}}</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text">{{allocation.amount}}</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text">{{allocation.price | number: '1.2-2'}}</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text">{{allocation.total | number: '1.2-2'}}</span></div>
+        <div class="stock-transactions__grid-cell center">
+            <a><span class="btn-transaction btn-transaction--sell" (click)="sellStock()">sell</span></a>
+        </div>
+        <app-transaction-popup
+            *ngIf=sellBool
+            [StockList]=StockList
+            [TransactionInfo]=TransactionInfo
+            (close)="closeSell($event)">
+        </app-transaction-popup>
+    </div>
+</section>

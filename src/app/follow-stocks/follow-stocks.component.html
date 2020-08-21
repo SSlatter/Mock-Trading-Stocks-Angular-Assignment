@@ -1,0 +1,27 @@
+
+<h2 class="stock-list__title">Stocks that I follow <a><span class="stock-list__btn stock-list__btn--add" (click)="openStockListModal()">+</span></a></h2>
+
+<div class="modal" id="modal">
+    <div class="modal__overlay"></div>
+    <div class="modal__content">
+        <div class="modal__close" (click)="closeStockListModal()">x</div>
+        <h2 class="modal__h2">Select a new stock to follow</h2>
+        <select class="modal__dropdown" #selectStock (change)="setFollowedStock(selectStock.value)">
+            <option *ngFor="let stock of StockList" value={{stock.symbol}}>
+                {{stock.name}}
+            </option>
+        </select>
+        <button class="modal__btn" (click)="followStock()">add</button>
+    </div>
+</div>
+
+<div class="stock-list__grid">
+    <div class="stock-list__grid-row" >
+        <followed-stock
+            *ngFor="let stock of WatchList" 
+            [symbol]=stock.symbol
+            [StockList]=StockList
+            (unfollow)="unfollowStock($event)">
+        </followed-stock>
+    </div>
+</div>

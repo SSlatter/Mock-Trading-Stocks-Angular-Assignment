@@ -1,0 +1,20 @@
+
+<h2 class="stock-list__title"> Symbol: 
+    <a>
+        <select class="modal__dropdown" #selectedStock (change)="setSymbol(selectedStock.value)">
+            <option *ngFor="let stock of stockList" value={{stock.symbol}}>{{stock.symbol}}</option>
+        </select>
+        <select class="modal__dropdown" #dailyYearly (change)="dailyOrYearly(dailyYearly.value)">
+            <option value=daily>Daily</option>
+            <option value=yearly>Yearly</option>
+        </select>
+    </a>
+</h2>
+
+<highcharts-chart 
+  [Highcharts]="Highcharts"
+  [options]="chartOptions"
+  [constructorType]="chartConstructor"
+  [(update)]='updateFlag'
+  style="width: 100%; height: 400px; display: block;"
+></highcharts-chart>

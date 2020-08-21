@@ -1,0 +1,21 @@
+<section class="stock-transactions full-width">
+    <div class="stock-transactions__grid-row">
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-text--white">Transaction ID</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-text--white">stock</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-text--white">amount</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-text--white">direction</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-text--white">price</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-text--white">total</span></div>
+    </div>
+    <!-- <div *ngFor="let transaction of transactionList | async; let i = index" [attr.data-index]="i" class="stock-transactions__grid-row"> -->
+    <div *ngFor="let transaction of transactionList; let i = index" [attr.data-index]="i" class="stock-transactions__grid-row">
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text">tr{{transactionList.length - i}}</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text">{{transaction.symbol}}</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text">{{transaction.amount}}</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text stock-transactions__grid-cell-sell">{{transaction.side}}</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text">{{transaction.tickPrice | number: '1.2-2'}}</span></div>
+        <div class="stock-transactions__grid-cell"><span class="stock-transactions__grid-text">{{transaction.cost | number: '1.2-2'}}</span></div>
+    </div>
+</section>
+
+
