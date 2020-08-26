@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TransactionInfo } from '../models/transactionInfo';
 import { UserService } from '../services/user.service';
+import { TransactionService } from '../services/transaction.service';
 
 @Component({
   selector: 'followed-stock',
@@ -16,7 +17,17 @@ export class FollowedStockComponent implements OnInit {
   StockInfo: any;
   BuySellBool: Boolean;
 
-  constructor(private http: HttpClient, private userService: UserService) { }
+  constructor(private http: HttpClient, private userService: UserService, private transactionService: TransactionService) { 
+    this.transactionService.allocationList.subscribe(data => {
+      if (this.StockInfo.stock === data.symbol) {
+        if (data.side === 'BUY') {
+          this.StockInfo.amount = this.StockInfo.amount + data.amount;
+        } else {
+          this.StockInfo.amount = this.StockInfo.amount - data.amount;
+        }
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.StockInfo = {

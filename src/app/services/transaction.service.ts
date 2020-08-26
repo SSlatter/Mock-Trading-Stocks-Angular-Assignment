@@ -9,8 +9,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TransactionService {
-  private _transactionList = new Subject<Array<Transaction>>();
-  private _allocationList = new Subject<Array<Transaction>>();
+  private _transactionList = new Subject<Transaction>();
+  private _allocationList = new Subject<Transaction>();
 
   transactionList = this._transactionList.asObservable();
   allocationList = this._allocationList.asObservable();
